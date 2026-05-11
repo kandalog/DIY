@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, Check, Clock, Lightbulb, Toolbox, X } from "lucide-react";
+import { ProcessImageGallery } from "./process-image-gallery";
 
 const BEFORE_ISSUES = [
   "作業スペースが狭い",
@@ -191,29 +192,7 @@ export default function Home() {
           >
             <h2 className="text-[17px] font-bold md:text-lg">制作過程</h2>
             {PROCESS_IMAGES.length > 0 ? (
-              <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {PROCESS_IMAGES.map((img, i) => (
-                  <figure
-                    key={`${img.src}-${i}`}
-                    className="overflow-hidden rounded-[12px] border border-neutral-100 bg-white shadow-[0_8px_30px_-20px_rgba(0,0,0,0.25)]"
-                  >
-                    <div className="relative aspect-4/3 w-full">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                    {img.caption ? (
-                      <figcaption className="px-4 py-3 text-[13px] leading-snug text-[#555555]">
-                        {img.caption}
-                      </figcaption>
-                    ) : null}
-                  </figure>
-                ))}
-              </div>
+              <ProcessImageGallery images={PROCESS_IMAGES} />
             ) : null}
           </section>
         </article>
