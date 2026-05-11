@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DIY LIFE — 自分らしく、つくる暮らし。",
-  description: "DIYでデスクを作成した記録ブログです。",
+  title: "kandalog",
+  description: "デスクDIY",
 };
 
 export default function RootLayout({
