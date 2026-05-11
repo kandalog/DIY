@@ -47,7 +47,9 @@ export default function Home() {
                 <span className="rounded-full bg-neutral-700 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
                   Before
                 </span>
-                <span className="text-[15px] font-semibold">以前のデスク</span>
+                <span className="text-[15px] font-semibold">
+                  以前のデスク (1200 x 600)
+                </span>
               </figcaption>
               <div className="relative aspect-4/3 w-full shrink-0">
                 <Image
@@ -90,7 +92,9 @@ export default function Home() {
                 <span className="rounded-full bg-[#5BA366] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
                   After
                 </span>
-                <span className="text-[15px] font-semibold">今のデスク</span>
+                <span className="text-[15px] font-semibold">
+                  今のデスク (1800 x 800)
+                </span>
               </figcaption>
               <div className="relative aspect-4/3 w-full shrink-0">
                 <Image
