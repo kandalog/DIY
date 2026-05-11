@@ -13,6 +13,14 @@ const AFTER_IMPROVEMENTS = [
   "木の温もりが感じられるデザインに満足！",
 ] as const;
 
+/** `public/` に置いた画像のパス */
+const PROCESS_IMAGES: { src: string; alt: string; caption?: string }[] = [
+  { src: "/image3.png", alt: "制作過程の写真（1／4）" },
+  { src: "/image4.jpg", alt: "制作過程の写真（2／4）" },
+  { src: "/image5.jpg", alt: "制作過程の写真（3／4）" },
+  { src: "/image6.jpg", alt: "制作過程の写真（4／4）" },
+];
+
 export default function Home() {
   return (
     <div className="flex min-h-full flex-1 flex-col bg-white text-[#333333]">
@@ -124,33 +132,23 @@ export default function Home() {
                   DIYにかかった金額😭
                 </h2>
                 <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
-                  <p className="font-bold">
-                    天板+脚 <span className="font-normal">1,9000円</span>
-                  </p>
+                  <span className="font-bold">天板+脚 </span>
+                  <span className="font-normal">19,000円</span>
                 </p>
                 <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
-                  <p className="font-bold">
-                    消耗品
-                    <span className="font-normal"> 1,600円</span>
-                  </p>
+                  <span className="font-bold">消耗品 </span>
+                  <span className="font-normal">1,600円</span>
                 </p>
                 <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
-                  <p className="font-bold">
-                    道具
-                    <span className="font-normal"> 18,000円</span>
-                  </p>
+                  <span className="font-bold">道具 </span>
+                  <span className="font-normal">18,000円</span>
                 </p>
                 <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
-                  <p className="font-bold">
-                    その他
-                    <span className="font-normal"> 8,000円</span>
-                  </p>
+                  <span className="font-bold">その他 </span>
+                  <span className="font-normal">8,000円</span>
                 </p>
               </div>
             </div>
-            {/* 
-
-            */}
 
             <dl className="mt-10 grid gap-8 border-t border-neutral-200/70 pt-8 sm:grid-cols-3">
               <div className="text-center">
@@ -186,6 +184,38 @@ export default function Home() {
           <p className="mt-8 text-[15px] leading-relaxed text-[#555555] md:text-base">
             次は2万円くらいで作れそうだけど、初回なのでだいぶお金がかかった😭
           </p>
+
+          <section
+            aria-label="制作過程"
+            className="mt-14 border-t border-neutral-100 pt-14"
+          >
+            <h2 className="text-[17px] font-bold md:text-lg">制作過程</h2>
+            {PROCESS_IMAGES.length > 0 ? (
+              <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {PROCESS_IMAGES.map((img, i) => (
+                  <figure
+                    key={`${img.src}-${i}`}
+                    className="overflow-hidden rounded-[12px] border border-neutral-100 bg-white shadow-[0_8px_30px_-20px_rgba(0,0,0,0.25)]"
+                  >
+                    <div className="relative aspect-4/3 w-full">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
+                    {img.caption ? (
+                      <figcaption className="px-4 py-3 text-[13px] leading-snug text-[#555555]">
+                        {img.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                ))}
+              </div>
+            ) : null}
+          </section>
         </article>
       </main>
     </div>
