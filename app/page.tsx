@@ -31,12 +31,8 @@ export default function Home() {
           </span>
 
           <h1 className="mt-4 text-[1.65rem] font-bold leading-snug tracking-tight md:text-4xl">
-            DIYでデスクを作成しました！
+            DIYでデスクをつくりました
           </h1>
-
-          <p className="mt-5 max-w-3xl text-[15px] leading-relaxed text-[#777777] md:text-base">
-            狭くて作業のしづらかったデスクからDIYの大きなデスクに進化しました
-          </p>
 
           <section
             aria-label="ビフォーアフター"
