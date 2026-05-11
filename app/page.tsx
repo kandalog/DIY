@@ -1,64 +1,192 @@
 import Image from "next/image";
+import { ArrowRight, Check, Clock, Lightbulb, Toolbox, X } from "lucide-react";
+
+const BEFORE_ISSUES = [
+  "作業スペースが狭い",
+  "ゲーミングPCは机の下",
+  "白一色で飽きた",
+] as const;
+
+const AFTER_IMPROVEMENTS = [
+  "広々とした作業スペースで快適！",
+  "ゲーミングPCをデスク上に配置可能に",
+  "木の温もりが感じられるデザインに満足！",
+] as const;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex min-h-full flex-1 flex-col bg-white text-[#333333]">
+      <main className="flex-1">
+        <article className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:pt-14">
+          <span className="inline-flex rounded-full bg-[#FFE8D6] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#c45f2a]">
+            DIY
+          </span>
+
+          <h1 className="mt-4 text-[1.65rem] font-bold leading-snug tracking-tight md:text-4xl">
+            DIYでデスクを作成しました！
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-5 max-w-3xl text-[15px] leading-relaxed text-[#777777] md:text-base">
+            狭くて作業のしづらかったデスクからDIYの大きなデスクに進化しました
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <section
+            aria-label="ビフォーアフター"
+            className="relative mt-12 grid gap-8 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch lg:gap-4"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <figure className="flex flex-col overflow-hidden rounded-[12px] border border-neutral-100 bg-white shadow-[0_12px_40px_-28px_rgba(0,0,0,0.35)]">
+              <figcaption className="flex items-center gap-2 border-b border-neutral-100 px-5 py-4">
+                <span className="rounded-full bg-neutral-700 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+                  Before
+                </span>
+                <span className="text-[15px] font-semibold">以前のデスク</span>
+              </figcaption>
+              <div className="relative aspect-4/3 w-full shrink-0">
+                <Image
+                  src="/before.jpg"
+                  alt="以前の狭く散らかったデスク"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+              <ul className="space-y-3 px-5 py-5">
+                {BEFORE_ISSUES.map((line) => (
+                  <li
+                    key={line}
+                    className="flex gap-3 text-[14px] leading-snug"
+                  >
+                    <span className="mt-0.5 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-[#bdbdbd]">
+                      <X
+                        className="h-3 w-3 text-white"
+                        aria-hidden
+                        strokeWidth={3}
+                      />
+                    </span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </figure>
+
+            <div
+              className="flex items-center justify-center lg:flex-col lg:justify-center lg:pb-24"
+              aria-hidden
+            >
+              <ArrowRight className="h-8 w-8 text-neutral-400 lg:rotate-0 rotate-90" />
+            </div>
+
+            <figure className="flex flex-col overflow-hidden rounded-[12px] border border-neutral-100 bg-white shadow-[0_12px_40px_-28px_rgba(0,0,0,0.35)]">
+              <figcaption className="flex items-center gap-2 border-b border-neutral-100 px-5 py-4">
+                <span className="rounded-full bg-[#5BA366] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+                  After
+                </span>
+                <span className="text-[15px] font-semibold">今のデスク</span>
+              </figcaption>
+              <div className="relative aspect-4/3 w-full shrink-0">
+                <Image
+                  src="/after.jpg"
+                  alt="DIYで作った明るく広い木製デスクとペグボード"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <ul className="space-y-3 px-5 py-5">
+                {AFTER_IMPROVEMENTS.map((line) => (
+                  <li
+                    key={line}
+                    className="flex gap-3 text-[14px] leading-snug"
+                  >
+                    <span className="mt-0.5 flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-[#5BA366]">
+                      <Check
+                        className="h-3 w-3 text-white"
+                        aria-hidden
+                        strokeWidth={3}
+                      />
+                    </span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </figure>
+          </section>
+
+          <aside className="mt-14 rounded-[12px] bg-[#FDF8F3] px-6 py-8 md:px-10 md:py-10">
+            <div className="flex flex-wrap items-start gap-3 md:gap-4">
+              <Lightbulb
+                aria-hidden
+                className="mt-1 h-6 w-6 shrink-0 text-amber-500"
+              />
+              <div className="min-w-0 flex-1 space-y-3">
+                <h2 className="text-[17px] font-bold md:text-lg">
+                  DIYにかかった金額😭
+                </h2>
+                <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
+                  <p className="font-bold">
+                    天板+脚 <span className="font-normal">1,9000円</span>
+                  </p>
+                </p>
+                <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
+                  <p className="font-bold">
+                    消耗品
+                    <span className="font-normal"> 1,600円</span>
+                  </p>
+                </p>
+                <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
+                  <p className="font-bold">
+                    道具
+                    <span className="font-normal"> 18,000円</span>
+                  </p>
+                </p>
+                <p className="text-[14px] leading-relaxed text-[#555555] md:text-[15px]">
+                  <p className="font-bold">
+                    その他
+                    <span className="font-normal"> 8,000円</span>
+                  </p>
+                </p>
+              </div>
+            </div>
+            {/* 
+
+            */}
+
+            <dl className="mt-10 grid gap-8 border-t border-neutral-200/70 pt-8 sm:grid-cols-3">
+              <div className="text-center">
+                <dt className="flex justify-center gap-2 text-[14px] text-[#777777]">
+                  <Clock className="h-4 w-4 shrink-0" aria-hidden />
+                  <span>製作期間</span>
+                </dt>
+                <dd className="mt-2 text-lg font-bold text-[#333333]">
+                  約3日間
+                </dd>
+              </div>
+              <div className="text-center">
+                <dt className="flex justify-center gap-2 text-[14px] text-[#777777]">
+                  <Toolbox className="h-4 w-4 shrink-0" aria-hidden />
+                  <span>総費用</span>
+                </dt>
+                <dd className="mt-2 text-lg font-bold text-[#333333]">
+                  約47000円
+                </dd>
+              </div>
+              <div className="text-center">
+                <dt className="flex justify-center gap-2 text-[14px] text-[#777777]">
+                  <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#5BA366] text-[10px] font-bold text-white">
+                    ✓
+                  </span>
+                  <span>難易度</span>
+                </dt>
+                <dd className="mt-2 text-lg font-bold text-[#333333]">簡単</dd>
+              </div>
+            </dl>
+          </aside>
+
+          <p className="mt-8 text-[15px] leading-relaxed text-[#555555] md:text-base">
+            次は2万円くらいで作れそうだけど、初回なのでだいぶお金がかかった😭
+          </p>
+        </article>
       </main>
     </div>
   );
